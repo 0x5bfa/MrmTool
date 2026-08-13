@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MrmTool.XBF2
+namespace MrmTool.Xbf.V2
 {
     public class XbfXmlNamespace
     {

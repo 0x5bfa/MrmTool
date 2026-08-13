@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
@@ -45,6 +46,10 @@
     <PackageReference Include="MrmLib" Version="1.1.0" />
     <PackageReference Include="TerraFX.Interop.Windows" Version="10.0.26100.5" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MrmTool.Xbf\MrmTool.Xbf.csproj" />
+  </ItemGroup>
   
   <ItemGroup>
     <EmbeddedPriResource Include="Assets\Icons\audio.png" />
@@ -61,12 +66,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Libs\WinUIEdit\WinUIEditorCsWinRT.dll" />
-    <ReferenceCopyLocalPaths Include="$(MSBuildProjectDirectory)\Libs\WinUIEdit\WinUIEditorCsWinRT.xml" />
-    <ReferenceCopyLocalPaths Include="$(MSBuildProjectDirectory)\Libs\WinUIEdit\WinUIEditor.pri" />
-    <ReferenceCopyLocalPaths Include="$(MSBuildProjectDirectory)\Libs\WinUIEdit\$(Platform)\WinUIEditor.dll"/>
-    <None Remove="Libs\WinUIEdit\WinUIEditor\**\*" />
-    <Page Remove="Libs\WinUIEdit\WinUIEditor\**\*" />
+    <Reference Include="Resources\WinUIEdit\WinUIEditorCsWinRT.dll" />
+    <ReferenceCopyLocalPaths Include="$(MSBuildProjectDirectory)\Resources\WinUIEdit\WinUIEditorCsWinRT.xml" />
+    <ReferenceCopyLocalPaths Include="$(MSBuildProjectDirectory)\Resources\WinUIEdit\WinUIEditor.pri" />
+    <ReferenceCopyLocalPaths Include="$(MSBuildProjectDirectory)\Resources\WinUIEdit\$(Platform)\WinUIEditor.dll"/>
+    <None Remove="Resources\WinUIEdit\WinUIEditor\**\*" />
+    <Page Remove="Resources\WinUIEdit\WinUIEditor\**\*" />
   </ItemGroup>
 
   <Import Project="Targets\PriTargets.targets" />

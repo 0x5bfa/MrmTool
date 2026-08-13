@@ -1,10 +1,9 @@
-﻿#nullable disable
+#nullable disable
 
-using MrmTool.XBF2;
 using System.Text;
 using System.Xml.Linq;
 
-namespace XbfAnalyzer.Xbf
+namespace MrmTool.Xbf.V2
 {
     public class XbfReader
     {

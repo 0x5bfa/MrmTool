@@ -1,6 +1,5 @@
 ﻿using MrmLib;
 using MrmTool.Models;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -78,43 +77,6 @@ namespace MrmTool.Common
             picker.InitializeWithWindow();
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static int LastIndexOf(this string str, char c, out int index)
-        {
-            index = str.LastIndexOf(c);
-            return index;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static string GetDisplayName(this string name)
-        {
-            return name.LastIndexOf('/', out var idx) != -1 ? name[(idx + 1)..] : name;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static string SetDisplayName(this string name, string displayName)
-        {
-            return name.LastIndexOf('/', out var idx) != -1 ? $"{name[..(idx + 1)]}{displayName}" : displayName;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static string? GetParentName(this string name)
-        {
-            return name.LastIndexOf('/', out var idx) != -1 ? name[..idx] : null;
-        }
-
-        private const char DirectorySeparatorChar = '\\';
-        private const char AltDirectorySeparatorChar = '/';
-
-        [return: NotNullIfNotNull(nameof(path))]
-        internal static string? GetExtensionAfterPeriod(this string path)
-        {
-            if (path == null)
-                return null;
-
-            return path.ToLowerInvariant().AsSpan().GetExtensionAfterPeriod().ToString();
-        }
-
         internal static string ToScintillaLanguage(this string extensionAfterPeriod)
         {
             return extensionAfterPeriod switch
@@ -127,42 +89,6 @@ namespace MrmTool.Common
                 "resw" or "resx" or "xaml" => "xml",
                 "scss" or "less" or "hss" => "css",
                 _ => extensionAfterPeriod,
-            };
-        }
-
-        internal static ResourceType DetermineResourceType(this string name)
-        {
-            return Path.GetExtension(name).ToLowerInvariant() switch
-            {
-                ".xbf"
-                    => ResourceType.Xbf,
-
-                ".xaml"
-                    => ResourceType.Xaml,
-
-                ".ttf" or ".otf" or ".ttc"
-                    => ResourceType.Font,
-
-                ".mp4" or ".avi" or ".mov" or ".wmv" or ".mkv" or ".webm"
-                    => ResourceType.Video,
-
-                ".mp3" or ".wav" or ".wma" or ".ogg" or ".flac" or ".opus"
-                    => ResourceType.Audio,
-
-                ".png" or ".jpg" or ".gif" or ".bmp" or ".jpeg" or
-                ".webp" or ".heif" or ".tiff"
-                    => ResourceType.Image,
-
-                ".svg"
-                    => ResourceType.Svg,
-
-                ".txt" or ".xml" or ".csv" or ".ini" or ".inf" or ".json" or ".html" or
-                ".htm" or ".css" or ".scss" or ".less" or ".hss" or ".js" or ".cs" or
-                ".resw" or ".resx"
-                    => ResourceType.Text,
-
-                _
-                    => ResourceType.Unknown
             };
         }
 
@@ -196,62 +122,6 @@ namespace MrmTool.Common
                 ResourceType.Xaml or ResourceType.Xbf => Icons.XamlLarge.Value,
                 _ => Icons.UnknownLarge.Value,
             };
-        }
-
-        internal static ReadOnlySpan<char> GetExtensionAfterPeriod(this ReadOnlySpan<char> path)
-        {
-            int length = path.Length;
-
-            for (int i = length - 1; i >= 0; i--)
-            {
-                char ch = path[i];
-                if (ch == '.')
-                {
-                    if (i != length - 1)
-                    {
-                        var idx = i + 1;
-                        return path.Slice(idx, length - idx);
-                    }
-                    else
-                        return ReadOnlySpan<char>.Empty;
-                }
-                if (IsDirectorySeparator(ch))
-                    break;
-            }
-
-            return ReadOnlySpan<char>.Empty;
-        }
-
-        /// <summary>
-        /// True if the given character is a directory separator.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static bool IsDirectorySeparator(char c)
-        {
-            return c == DirectorySeparatorChar || c == AltDirectorySeparatorChar;
-        }
-
-        internal static string[] SplitIntoResourceNames(this string resourceName)
-        {
-            int count = resourceName.Count('/');
-
-            if (count is 0)
-            {
-                return [resourceName];
-            }
-
-            int resultIdx = 0;
-            int currentIdx = -1;
-            var result = new string[count + 1];
-
-            while ((currentIdx = resourceName.IndexOf('/', currentIdx + 1)) >= 0)
-            {
-                result[resultIdx++] = resourceName.Substring(0, currentIdx);
-            }
-
-            result[resultIdx] = resourceName;
-
-            return result;
         }
 
         internal static bool Matches(this Qualifier left, Qualifier right)
