@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 
 using System.Text;
 using System.Xml.Linq;
