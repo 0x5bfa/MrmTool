@@ -16,7 +16,7 @@ namespace MrmTool.Models
         Font
     }
 
-    internal static class ResourceTypeEx
+    internal static class ResourceTypeExtensions
     {
         extension(ResourceType type)
         {

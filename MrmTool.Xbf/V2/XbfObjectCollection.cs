@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XbfAnalyzer.Xbf
+namespace MrmTool.Xbf.V2
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CsWinRT1028:Class is not marked partial", Justification = "<Pending>")]
     public class XbfObjectCollection : List<XbfObject>

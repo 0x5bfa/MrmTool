@@ -1,4 +1,4 @@
-﻿namespace MrmTool.XBF2
+﻿namespace MrmTool.Xbf.V2
 {
     public enum CustomWriterRuntimeDataTypeIndex
     {

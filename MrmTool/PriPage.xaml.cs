@@ -5,6 +5,7 @@ using MrmTool.Dialogs;
 using MrmTool.Models;
 using MrmTool.Scintilla;
 using MrmTool.SVG;
+using MrmTool.Xbf;
 using System.Collections.ObjectModel;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -505,8 +506,7 @@ namespace MrmTool
                         // XBF parser and its "WidgetSpinner" XBF decompiler, since the native parser support
                         // XBF v1 and is architectured in a way that allows us to build a recompiler on top easily.
 
-                        var reader = new XbfAnalyzer.Xbf.XbfReader(stream.AsStream());
-                        DisplayStringCandidate(reader.RootObject.ToString());
+                        DisplayStringCandidate(XbfDecompiler.Decompile(stream.AsStream()));
                     }
                     catch (Exception ex)
                     {

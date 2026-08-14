@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace XbfAnalyzer.Xbf
+namespace MrmTool.Xbf.V2
 {
     internal static class ColorHelpers
     {
