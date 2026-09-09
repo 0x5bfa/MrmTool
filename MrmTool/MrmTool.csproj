@@ -45,12 +45,9 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed" Version="3.0.1" />
     <PackageReference Include="MrmLib" Version="1.1.0" />
     <PackageReference Include="TerraFX.Interop.Windows" Version="10.0.26100.5" />
+    <PackageReference Include="XbfKit" Version="0.1.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MrmTool.Xbf\MrmTool.Xbf.csproj" />
-  </ItemGroup>
-  
   <ItemGroup>
     <EmbeddedPriResource Include="Assets\Icons\audio.png" />
     <EmbeddedPriResource Include="Assets\Icons\folder.png" />
