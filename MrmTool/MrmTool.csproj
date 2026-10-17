@@ -41,11 +41,12 @@
   
   <ItemGroup>
     <PackageReference Include="Dongle.GuidRVAGen" Version="1.0.5" />
-    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.3.0-prerelease.251115.2" />
+    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.3.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed" Version="3.0.1" />
     <PackageReference Include="MrmLib" Version="1.1.0" />
     <PackageReference Include="TerraFX.Interop.Windows" Version="10.0.26100.5" />
     <PackageReference Include="XbfKit" Version="0.3.0" />
+    <PackageReference Include="XamlHostingKit" Version="0.1.0" />
   </ItemGroup>
 
   <ItemGroup>
